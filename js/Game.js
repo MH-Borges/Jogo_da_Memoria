@@ -142,7 +142,6 @@ const Facil = () =>{
     valorWin = 10;
     interval = setInterval(timeGenerator, 1000);
     loadGame(arrayCut);
-    
 
 }
 
