@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memoria | Nome jogador</title>
+    <link rel="icon" type="image/x-icon" href="Imgs/Logo.png">
+
+
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/styleGame.css">
+
+    <script defer src="js/Game.js"></script>
+</head>
+<body>
+
+    <main>
+        <div class="block">
+
+            <header>
+                <span class="player"></span>
+                <div class="moves">
+                    Movimentos: 0
+                </div>
+                <div class="timer">
+                    Tempo: 00:00
+                </div>
+            </header>
+
+            <div class="BoxBtns Classes">
+                <h2>Escolha uma classe</h2>
+                <button onclick="Cavaleiros()">Cavaleiros</button>
+                <button onclick="Dragoes()">Dragões</button>
+                <button onclick="Paisagens()">Paisagens</button>
+                <button onclick="TodasClasses()">Tudo junto e misturado</button>
+            </div>
+
+            <div class="BoxBtns Dificuldade hide">
+                <h2>Escolha uma Dificuldade</h2>
+                <button class="facil" onclick="Facil()">Facil</button>
+                <button class="medio" onclick="Medio()">Medio</button>
+                <button class="dificil" onclick="Dificil()">Dificil</button>
+                <button class="dificilPlus hide" onclick="MuitoDificil()">Extremo</button>
+            </div>
+        
+            <div class="grid hide"></div>
+
+            <button class="reset" onclick="Reset()">Resetar</button>
+
+        </div>
+        
+    </main>
+
+    
+</body>
+</html>

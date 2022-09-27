@@ -1,0 +1,331 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+.Inicio {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  background: #57D9EC;
+  background: linear-gradient(45deg, #0472a1 0%, #00d9ff 75%);
+  background-image: url("../Imgs/Back_login.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.Inicio .Header {
+  margin-top: -5vh;
+  padding: 10px;
+}
+
+.Inicio .Header img {
+  width: 15vw;
+}
+
+.Inicio .Header h1 {
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 0.1vw;
+  color: white;
+  font-size: 3vw;
+  text-shadow: 2px 2px 2px black;
+  margin-top: -3vh;
+}
+
+.Inicio .NomeJogador {
+  padding: 1vw;
+  margin: 5vh 0 1vh 0;
+  font-size: 1.5vw;
+  border-radius: 1vw;
+}
+
+.Inicio .BtnSubmit {
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 0.1vw;
+  padding: 1vh 5vw;
+  font-size: 1.5vw;
+  margin-top: 2vh;
+  border-radius: 1vw;
+  -webkit-box-shadow: 1px 1px 5px #055764;
+          box-shadow: 1px 1px 5px #055764;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  background: #0012b3;
+  color: white;
+  cursor: pointer;
+}
+
+.Inicio .BtnSubmit:hover {
+  -webkit-transform: translateY(-1vh);
+          transform: translateY(-1vh);
+  background-color: #081379;
+  letter-spacing: 0.5vw;
+}
+
+.Inicio .BtnSubmit:disabled {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  background: lightgray;
+  letter-spacing: 0.1vw;
+  color: gray;
+  cursor: auto;
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("../Imgs/Background.jpg");
+  background-size: cover;
+  background-position: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 75vw;
+  min-height: 75vh;
+  margin-top: 5vh;
+  border-radius: 1vw;
+}
+
+main .block header {
+  position: absolute;
+  top: 0;
+  font-family: 'Anton', sans-serif;
+  width: 100%;
+  padding: 1vw;
+  text-align: right;
+  font-size: 1.3vw;
+}
+
+main .block header .player {
+  font-size: 1.5vw;
+  letter-spacing: 0.1vw;
+  left: 2vw;
+  position: absolute;
+}
+
+main .block .BoxBtns {
+  font-family: 'Anton', sans-serif;
+  text-align: center;
+  margin-top: -5vh;
+}
+
+main .block .BoxBtns h2 {
+  font-size: 2vw;
+  letter-spacing: 0.1vw;
+}
+
+main .block .BoxBtns button {
+  font-size: 1vw;
+  font-family: 'Anton', sans-serif;
+  padding: 1vw 2vw;
+  margin: 3vw 1vw 0 0;
+  border-radius: 1vw;
+  background-color: #525252;
+  color: white;
+  -webkit-box-shadow: 0px 2px 10px white;
+          box-shadow: 0px 2px 10px white;
+  border: 1px solid white;
+}
+
+main .block .BoxBtns .facil {
+  background-color: green;
+  color: greenyellow;
+  border: 1px solid lightgreen;
+  -webkit-box-shadow: 0px 2px 10px #97ff8e;
+          box-shadow: 0px 2px 10px #97ff8e;
+}
+
+main .block .BoxBtns .medio {
+  background-color: yellow;
+  color: #b3a70a;
+  border: 1px solid lightyellow;
+  -webkit-box-shadow: 0px 2px 10px #fdff8e;
+          box-shadow: 0px 2px 10px #fdff8e;
+}
+
+main .block .BoxBtns .dificil {
+  background-color: orange;
+  color: #9b680a;
+  border: 1px solid lightsalmon;
+  -webkit-box-shadow: 0px 2px 10px #ffac5e;
+          box-shadow: 0px 2px 10px #ffac5e;
+}
+
+main .block .BoxBtns .dificilPlus {
+  background-color: red;
+  color: #ff9999;
+  border: 1px solid lightsalmon;
+  -webkit-box-shadow: 0px 2px 10px #ff9090;
+          box-shadow: 0px 2px 10px #ff9090;
+}
+
+main .block .grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  padding: 2vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10vh;
+}
+
+main .block .grid .card {
+  margin: 0.5vw 1vw;
+  width: 12vw;
+  height: 32vh;
+  background-color: white;
+  border-radius: 1vw;
+  position: relative;
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+main .block .grid .card .face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 1vw;
+  border: 2px solid #333;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+main .block .grid .card .front {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+main .block .grid .card .back {
+  background-image: url("../Imgs/Back-Card.jpg");
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+main .block .grid .revelaCarta {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+main .block .grid .disabledCartas {
+  -webkit-filter: saturate(0.9);
+          filter: saturate(0.9);
+  opacity: 0.6;
+  border: 1px solid #333;
+}
+
+main .block .hide {
+  display: none;
+}
+
+main .block .win {
+  text-align: center;
+  font-family: 'Anton', sans-serif;
+  font-size: 1.2vw;
+  letter-spacing: 0.1vw;
+}
+
+main .block .win h2 {
+  font-size: 2.3vw;
+  margin-bottom: 4vh;
+}
+
+main .block .win p {
+  padding: 1vh 0;
+}
+
+main .block .win button {
+  font-size: 1vw;
+  font-family: 'Anton', sans-serif;
+  padding: 0.5vw 1vw;
+  margin: 0 0.5vw;
+  border-radius: 0.5vw;
+  margin-top: 2vw;
+  background-color: #525252;
+  color: white;
+  -webkit-box-shadow: 0px 2px 5px white;
+          box-shadow: 0px 2px 5px white;
+  border: 1px solid white;
+}
+
+main .block .reset {
+  position: absolute;
+  top: -5vh;
+  right: -10vw;
+  font-size: 1vw;
+  font-family: 'Anton', sans-serif;
+  padding: 0.7vw 1.5vw;
+  border-radius: 0.5vw;
+  background-color: #525252;
+  color: white;
+  letter-spacing: 0.1vw;
+}
+
+main .block .escolhas {
+  position: absolute;
+  top: -5.65vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #333;
+  border-bottom: 0;
+  padding: 0.5vw 1vw;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 1;
+  border-radius: 2vw 2vw 0 0;
+}
+
+main .block .escolhas p {
+  font-family: 'Anton', sans-serif;
+  margin: 0 2vw;
+  letter-spacing: 0.1vw;
+  font-size: 1.3vw;
+}
+
+main .block .escolhas p .classeEscolha {
+  color: green;
+}
+/*# sourceMappingURL=styleGame.css.map */
