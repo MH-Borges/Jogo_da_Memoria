@@ -406,4 +406,4 @@ const loadGame = (items) => {
 
 const Reset = () => document.location.reload();
 
-const Voltar = () => window.location = './MemoryGame.html';
+const Voltar = () => window.location = './index.html';
