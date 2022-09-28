@@ -367,7 +367,6 @@ main .block .escolhas p .classeEscolha {
     min-height: 80vh;
     margin-top: 7vh;
     border-radius: 5vw;
-    text-align: center;
   }
   main .block header {
     padding: 3vw;

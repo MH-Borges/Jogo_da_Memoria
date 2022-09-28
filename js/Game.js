@@ -9,13 +9,14 @@ const hardPlus = document.querySelector('.dificilPlus');
 const resetBtn = document.querySelector('.reset');
 
 
-let valorWin = 0, seconds = 0, minutes = 0, movesCount = 0, isTodos = 0;
-let firstCard = '', secondCard = '', classeEscolha = '', dificuldadeEscolha = '';
+let valorWin = 0, seconds = 0, minutes = 0, movesCount = 0;
+let firstCard = '', secondCard = '', classeEscolha = '';
+let arrayCards = [], arrayCut = [];
+let isTodos = false, isHardPlus = false;
 
 const Reset = () => document.location.reload();
 const Voltar = () => window.location = './index.html';
 
-let arrayCards = []
 
 const Cavaleiros = () =>{
     const characters = [
@@ -30,16 +31,11 @@ const Cavaleiros = () =>{
         'Stoico',
         'Valka'
     ];
-
-    classeEscolha = 'Cavaleiros';
-    dificuldade.classList.remove('hide');
-    classes.classList.add('hide');
+    setVariaveisClass('Cavaleiros');
     arrayCards = characters;
-    isTodos = 0;
 
 }
 const Dragoes = () =>{
-
     const dragons = [
         'Banguela',
         'Batatao',
@@ -53,29 +49,21 @@ const Dragoes = () =>{
         'Ziperarrepiante'
     ];
 
-    classeEscolha = 'Dragões';
-    dificuldade.classList.remove('hide');
-    classes.classList.add('hide');
+    setVariaveisClass('Dragões');
     arrayCards = dragons;
-    isTodos = 0;
 
 }
 const Paisagens = () =>{
-
     const paisagens = [
         'Bg01','Bg02','Bg03','Bg04','Bg05',
         'Bg06','Bg07','Bg08','Bg09','Bg10'
     ];
 
-    classeEscolha = 'Paisagens';
-    dificuldade.classList.remove('hide');
-    classes.classList.add('hide');
+    setVariaveisClass('Paisagens');
     arrayCards = paisagens;
-    isTodos = 0;
 
 }
 const TodasClasses = () =>{
-
     const Tudo = [
         'Bg01','Bg02','Bg03','Bg04','Bg05',
         'Bg06','Bg07','Bg08','Bg09','Bg10',
@@ -116,157 +104,36 @@ const TodasClasses = () =>{
         'TurmaToda'
     ];
 
-    classeEscolha = 'Tudo junto e misturado';
-
-        hardPlus.classList.remove('hide');
-    dificuldade.classList.remove('hide');
-    classes.classList.add('hide');
+    setVariaveisClass('Tudo junto e misturado');
+    hardPlus.classList.remove('hide');
+    isTodos = true;
     arrayCards = Tudo;
-
-    isTodos = 1;
     
 }
 
 
 const Facil = () =>{
-    let arrayCut = [];
-    for(i=0; i < 5 || arrayCut.length < 5; i++ ){
-        elemento = arrayCards[Math.floor(Math.random() * arrayCards.length)]
-        if(arrayCut.indexOf(elemento) === -1){
-            arrayCut.push(elemento);
-        }
-    }
-
-    dificuldadeEscolha = 'Facil';
-    let escolhas = document.createElement('div');
-    escolhas.innerHTML = 
-    `
-        <p>Classe: <span class="classeEscolha"> ${classeEscolha} </span></p>
-        <p>Dificuldade: <span class="dificuldadeEscolha"> ${dificuldadeEscolha} </span></p>
-    `;
-    escolhas.classList.add('escolhas');
-    
-    if(isTodos === 1 && window.innerWidth < 767){
-        escolhas.style.margin = "-3.1vh 0 0 0";
-        resetBtn.style.margin = "-2vh 0 0 0"
-    }
-
-    block.appendChild(escolhas);
-    document.querySelector('.dificuldadeEscolha').style.color = "green"
-    grid.classList.remove('hide');
-    dificuldade.classList.add('hide');
-    valorWin = 10;
-    interval = setInterval(timeGenerator, 1000);
+    arrayMix(5);
+    EscolhasBox('Facil', '-3.1vh 0 0 0', '-2vh 0 0 0', 'green');
+    setVariaveisDifi('2vw', '10vh 0 0 0', 10);
     loadGame(arrayCut);
-
 }
-
 const Medio = () =>{
-
-    let arrayCut = [];
-    for(i=0; i < 8 || arrayCut.length < 8; i++ ){
-        elemento = arrayCards[Math.floor(Math.random() * arrayCards.length)]
-        if(arrayCut.indexOf(elemento) === -1){
-            arrayCut.push(elemento);
-        }
-    }
-
-    dificuldadeEscolha = 'Medio';
-    let escolhas = document.createElement('div');
-    escolhas.innerHTML = 
-    `
-        <p>Classe: <span class="classeEscolha"> ${classeEscolha} </span></p>
-        <p>Dificuldade: <span class="dificuldadeEscolha"> ${dificuldadeEscolha} </span></p>
-    `;
-    escolhas.classList.add('escolhas');
-    
-    block.appendChild(escolhas);
-    document.querySelector('.dificuldadeEscolha').style.color = "yellow"
-
-    if(isTodos === 1 && window.innerWidth < 767){
-        escolhas.style.margin = "-3.1vh 0 0 0";
-    }
-
-    grid.classList.remove('hide');
-    grid.style.padding = "2vw 3vw 1vw"
-    grid.style.margin = "8vh 0 0 0"
-    dificuldade.classList.add('hide');
-    valorWin = 16;
-    interval = setInterval(timeGenerator, 1000);
+    arrayMix(8);
+    EscolhasBox('Medio', '-3.1vh 0 0 0', '0 0 0 0', 'yellow');
+    setVariaveisDifi('2vw 3vw 1vw', '8vh 0 0 0', 16);
     loadGame(arrayCut);
-
-    let cards = document.querySelectorAll('.card');
-    var cardArray = [...cards];
-    cardArray.forEach(card => {
-
-        if(window.innerWidth < 767){
-            card.style.width = "22vw"
-            card.style.height = "13vh"
-            card.style.margin = "0.5vh 1.5vw"
-            grid.style.margin = "7vh 0 0 0";
-            resetBtn.style.margin = "97vh -1vw 0 0"
-        }else{
-            card.style.width = "10vw"
-            card.style.height = "25vh"
-            card.style.margin = "0.5vw"
-        }
-        
-    });
-
+    cardStyle('22vw','13vh','0.5vh 1.5vw','7vh 0 0 0','97vh -1vw 0 0', '10vw', '25vh', '0.5vw', '0');
 }
-
 const Dificil = () =>{
 
-    let arrayCut = [];
-    for(i=0; i < 10 || arrayCut.length < 10; i++ ){
-        elemento = arrayCards[Math.floor(Math.random() * arrayCards.length)]
-        if(arrayCut.indexOf(elemento) === -1){
-            arrayCut.push(elemento);
-        }
-    }
-
-    dificuldadeEscolha = 'Dificil';
-    let escolhas = document.createElement('div');
-    escolhas.innerHTML = 
-    `
-        <p>Classe: <span class="classeEscolha"> ${classeEscolha} </span></p>
-        <p>Dificuldade: <span class="dificuldadeEscolha"> ${dificuldadeEscolha} </span></p>
-    `;
-    escolhas.classList.add('escolhas');
-    
-    block.appendChild(escolhas);
-    document.querySelector('.dificuldadeEscolha').style.color = "orange"
-    
-    if(isTodos === 1 && window.innerWidth < 767){
-        escolhas.style.margin = "-3vh 0 0 0";
-        resetBtn.style.margin = "-1vh 0 0 0"
-    }
-
-    grid.classList.remove('hide');
-    grid.style.padding = "1vw"
-    dificuldade.classList.add('hide');
-    valorWin = 20;
-    interval = setInterval(timeGenerator, 1000);
+    arrayMix(10);
+    EscolhasBox('Dificil', '-3vh 0 0 0', '-1vh 0 0 0', 'orange');
+    setVariaveisDifi('1vw', '10vh 0 0 0', 20);
     loadGame(arrayCut);
+    cardStyle('18vw','14vh','0.5vh 1vw','8vh 0 0 0','0', '9vw', '23vh', '0.5vw', '0');
 
-    let cards = document.querySelectorAll('.card');
-    var cardArray = [...cards];
-    cardArray.forEach(card => {
-
-        if(window.innerWidth < 767){
-            card.style.width = "18vw"
-            card.style.height = "14vh"
-            card.style.margin = "0.5vh 1vw"
-        }else{
-            card.style.width = "9vw"
-            card.style.height = "23vh"
-            card.style.margin = "0.5vw"
-        }
-
-        
-    });
 }
-
 const MuitoDificil = () =>{
 
     if(window.innerWidth < 767){
@@ -276,68 +143,114 @@ const MuitoDificil = () =>{
         
         setTimeout(() => {
             avisoCel.innerHTML = '';
-        }, 5000);
+        }, 2000);
         return;
     }
 
+    arrayMix(45);
+    EscolhasBox('Extremo', '0 0 0 0', '0 0 0 0', 'red');
+    setVariaveisDifi('0.5vw', '10vh 0 0 0', 90);
+    loadGame(arrayCut);
 
-    let arrayCut = [];
-    for(i=0; i < 45 || arrayCut.length < 45; i++ ){
+    block.style.width = '90vw';
+    isHardPlus = true;
+    cardStyle('0','0','0','0','0', '6vw', '13vh', '0.3vw', '0 6vw 0 0');
+
+}
+
+
+///////// Funçoes reutilizadas ///////
+
+const setVariaveisClass = (nomeClass) =>{
+    classeEscolha = nomeClass;
+    dificuldade.classList.remove('hide');
+    classes.classList.add('hide');
+    isTodos = false;
+}
+
+const arrayMix = (quantItens) =>{
+    
+    for(i=0; i < quantItens || arrayCut.length < quantItens; i++ ){
         elemento = arrayCards[Math.floor(Math.random() * arrayCards.length)]
         if(arrayCut.indexOf(elemento) === -1){
             arrayCut.push(elemento);
         }
     }
 
-    dificuldadeEscolha = 'Extremo';
+}
+
+const EscolhasBox = (dificuldade, escolhasMargin, btnMargin, corTxt) =>{
+    dificuldadeEscolha = 'Facil';
     let escolhas = document.createElement('div');
     escolhas.innerHTML = 
     `
         <p>Classe: <span class="classeEscolha"> ${classeEscolha} </span></p>
-        <p>Dificuldade: <span class="dificuldadeEscolha"> ${dificuldadeEscolha} </span></p>
+        <p>Dificuldade: <span class="dificuldadeEscolha"> ${dificuldade} </span></p>
     `;
     escolhas.classList.add('escolhas');
     
+    if(isTodos && window.innerWidth < 767){
+        escolhas.style.margin = escolhasMargin;
+        resetBtn.style.margin = btnMargin;
+    }
+
     block.appendChild(escolhas);
-    document.querySelector('.dificuldadeEscolha').style.color = "red"
-
-
-    grid.classList.remove('hide');
-    grid.style.padding = "0.5vw"
-    //dificuldade.classList.add('hide');
-    valorWin = 20;
-    interval = setInterval(timeGenerator, 1000);
-    loadGame(arrayCut);
-
-    let cards = document.querySelectorAll('.card');
-    var cardArray = [...cards];
-    cardArray.forEach(card => {
-        
-        card.style.width = "4vw"
-        card.style.height = "10vh"
-        card.style.margin = "0.3vw"
-        
-        setTimeout(() => {
-            card.classList.add('revelaCarta');
-            setTimeout(() => {
-                card.classList.remove('revelaCarta');
-            }, 5000);
-        }, 200);
-        
-
-    });
-
-
-
+    document.querySelector('.dificuldadeEscolha').style.color = corTxt;
 }
 
+const setVariaveisDifi = (padding, margin, valorGanha) =>{
 
+    grid.classList.remove('hide');
+    dificuldade.classList.add('hide');
+
+    grid.style.padding = padding;
+    grid.style.margin = margin;
+    valorWin = valorGanha;
+    interval = setInterval(timeGenerator, 1000);
+
+}
 
 const createElement = (tag, className) => {
     const element = document.createElement(tag);
     element.className = className;
     return element;
 }
+
+const cardStyle = (widthC, heightC, marginC, marginGC, resetC, 
+                    widthP, heightP, marginP, resetP) =>{
+
+    let cards = document.querySelectorAll('.card');
+    var cardArray = [...cards];
+    cardArray.forEach(card => {
+        
+        if(window.innerWidth < 767){
+            card.style.width = widthC;
+            card.style.height = heightC;
+            card.style.margin = marginC;
+            grid.style.margin = marginGC;
+            resetBtn.style.margin = resetC;
+        }else{
+            card.style.width = widthP;
+            card.style.height = heightP;
+            card.style.margin = marginP;
+            resetBtn.style.margin = resetP;
+        }
+
+        if(isHardPlus){
+            setTimeout(() => {
+                card.classList.add('revelaCarta');
+                setTimeout(() => {
+                    card.classList.remove('revelaCarta');
+                }, 5000);
+            }, 200);
+        }
+        
+    });
+
+}
+
+///////// Funçoes reutilizadas ///////
+
 
 const timeGenerator = () => {
     seconds += 1;
