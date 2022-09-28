@@ -273,6 +273,10 @@ const MuitoDificil = () =>{
         let avisoCel = document.createElement('div');
         avisoCel.innerHTML = '<h2 style="font-size: 5vw; text-align: center; padding: 2vh 10vw 0; font-weight: 900;">Apenas Disponivel na versão Web</h2>';
         block.appendChild(avisoCel);
+        
+        setTimeout(() => {
+            avisoCel.innerHTML = '';
+        }, 5000);
         return;
     }
 
