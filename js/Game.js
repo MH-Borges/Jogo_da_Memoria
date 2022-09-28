@@ -6,9 +6,14 @@ const spanPlayer = document.querySelector('.player').innerHTML = "Jogador: " +lo
 const dificuldade = document.querySelector('.Dificuldade');
 const classes = document.querySelector('.Classes');
 const hardPlus = document.querySelector('.dificilPlus');
+const resetBtn = document.querySelector('.reset');
 
-let valorWin = 0, seconds = 0, minutes = 0, movesCount = 0;
+
+let valorWin = 0, seconds = 0, minutes = 0, movesCount = 0, isTodos = 0;
 let firstCard = '', secondCard = '', classeEscolha = '', dificuldadeEscolha = '';
+
+const Reset = () => document.location.reload();
+const Voltar = () => window.location = './index.html';
 
 let arrayCards = []
 
@@ -30,6 +35,7 @@ const Cavaleiros = () =>{
     dificuldade.classList.remove('hide');
     classes.classList.add('hide');
     arrayCards = characters;
+    isTodos = 0;
 
 }
 const Dragoes = () =>{
@@ -51,6 +57,7 @@ const Dragoes = () =>{
     dificuldade.classList.remove('hide');
     classes.classList.add('hide');
     arrayCards = dragons;
+    isTodos = 0;
 
 }
 const Paisagens = () =>{
@@ -64,6 +71,7 @@ const Paisagens = () =>{
     dificuldade.classList.remove('hide');
     classes.classList.add('hide');
     arrayCards = paisagens;
+    isTodos = 0;
 
 }
 const TodasClasses = () =>{
@@ -109,10 +117,14 @@ const TodasClasses = () =>{
     ];
 
     classeEscolha = 'Tudo junto e misturado';
-    hardPlus.classList.remove('hide');
+
+        hardPlus.classList.remove('hide');
     dificuldade.classList.remove('hide');
     classes.classList.add('hide');
     arrayCards = Tudo;
+
+    isTodos = 1;
+    
 }
 
 
@@ -134,6 +146,10 @@ const Facil = () =>{
     `;
     escolhas.classList.add('escolhas');
     
+    if(isTodos === 1 && window.innerWidth < 767){
+        escolhas.style.margin = "-3.1vh 0 0 0";
+        resetBtn.style.margin = "-2vh 0 0 0"
+    }
 
     block.appendChild(escolhas);
     document.querySelector('.dificuldadeEscolha').style.color = "green"
@@ -167,6 +183,9 @@ const Medio = () =>{
     block.appendChild(escolhas);
     document.querySelector('.dificuldadeEscolha').style.color = "yellow"
 
+    if(isTodos === 1 && window.innerWidth < 767){
+        escolhas.style.margin = "-3.1vh 0 0 0";
+    }
 
     grid.classList.remove('hide');
     grid.style.padding = "2vw 3vw 1vw"
@@ -179,9 +198,19 @@ const Medio = () =>{
     let cards = document.querySelectorAll('.card');
     var cardArray = [...cards];
     cardArray.forEach(card => {
-        card.style.width = "10vw"
-        card.style.height = "25vh"
-        card.style.margin = "0.5vw"
+
+        if(window.innerWidth < 767){
+            card.style.width = "22vw"
+            card.style.height = "13vh"
+            card.style.margin = "0.5vh 1.5vw"
+            grid.style.margin = "7vh 0 0 0";
+            resetBtn.style.margin = "97vh -1vw 0 0"
+        }else{
+            card.style.width = "10vw"
+            card.style.height = "25vh"
+            card.style.margin = "0.5vw"
+        }
+        
     });
 
 }
@@ -207,6 +236,11 @@ const Dificil = () =>{
     
     block.appendChild(escolhas);
     document.querySelector('.dificuldadeEscolha').style.color = "orange"
+    
+    if(isTodos === 1 && window.innerWidth < 767){
+        escolhas.style.margin = "-3vh 0 0 0";
+        resetBtn.style.margin = "-1vh 0 0 0"
+    }
 
     grid.classList.remove('hide');
     grid.style.padding = "1vw"
@@ -218,13 +252,30 @@ const Dificil = () =>{
     let cards = document.querySelectorAll('.card');
     var cardArray = [...cards];
     cardArray.forEach(card => {
-        card.style.width = "9vw"
-        card.style.height = "23vh"
-        card.style.margin = "0.5vw"
+
+        if(window.innerWidth < 767){
+            card.style.width = "18vw"
+            card.style.height = "14vh"
+            card.style.margin = "0.5vh 1vw"
+        }else{
+            card.style.width = "9vw"
+            card.style.height = "23vh"
+            card.style.margin = "0.5vw"
+        }
+
+        
     });
 }
 
 const MuitoDificil = () =>{
+
+    if(window.innerWidth < 767){
+        let avisoCel = document.createElement('div');
+        avisoCel.innerHTML = '<h2 style="font-size: 5vw; text-align: center; padding: 2vh 10vw 0; font-weight: 900;">Apenas Disponivel na versão Web</h2>';
+        block.appendChild(avisoCel);
+        return;
+    }
+
 
     let arrayCut = [];
     for(i=0; i < 45 || arrayCut.length < 45; i++ ){
@@ -249,7 +300,7 @@ const MuitoDificil = () =>{
 
     grid.classList.remove('hide');
     grid.style.padding = "0.5vw"
-    dificuldade.classList.add('hide');
+    //dificuldade.classList.add('hide');
     valorWin = 20;
     interval = setInterval(timeGenerator, 1000);
     loadGame(arrayCut);
@@ -257,9 +308,11 @@ const MuitoDificil = () =>{
     let cards = document.querySelectorAll('.card');
     var cardArray = [...cards];
     cardArray.forEach(card => {
+        
         card.style.width = "4vw"
         card.style.height = "10vh"
         card.style.margin = "0.3vw"
+        
         setTimeout(() => {
             card.classList.add('revelaCarta');
             setTimeout(() => {
@@ -291,12 +344,12 @@ const timeGenerator = () => {
     let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
     let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
     timeValue.innerHTML = `Tempo: ${minutesValue}:${secondsValue}`;
-};
+}
 
 const movesCounter = () => {
     movesCount += 1;
     moves.innerHTML = ` Movimentos: ${movesCount}`;
-};
+}
 
 const checkFinalJogo = () =>{
     const disabledCartas = document.querySelectorAll('.disabledCartas');
@@ -402,7 +455,3 @@ const loadGame = (items) => {
     });
 
 }
-
-const Reset = () => document.location.reload();
-
-const Voltar = () => window.location = './index.html';

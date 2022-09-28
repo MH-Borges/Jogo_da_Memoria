@@ -367,6 +367,7 @@ main .block .escolhas p .classeEscolha {
     min-height: 80vh;
     margin-top: 7vh;
     border-radius: 5vw;
+    text-align: center;
   }
   main .block header {
     padding: 3vw;
@@ -435,7 +436,7 @@ main .block .escolhas p .classeEscolha {
     border-radius: 3vw;
   }
   main .block .reset {
-    top: -10vh;
+    top: -11vh;
     right: -5vw;
     font-size: 5vw;
     padding: 1vw 4vw;
@@ -443,7 +444,7 @@ main .block .escolhas p .classeEscolha {
     letter-spacing: 0.5vw;
   }
   main .block .escolhas {
-    top: -3.8vh;
+    top: -4.2vh;
     border: 1px solid #333;
     border-bottom: none;
     padding: 0.5vh 3vw;
