@@ -5,7 +5,16 @@
     box-sizing: border-box;
     list-style: none;
 }
-
+.HomeJogos{
+    position: absolute;
+    bottom: 2vh;
+    left: 1vw;
+    font-size: 1.5vw;
+    color: white;
+    font-weight: 900;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+}
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
 .Inicio{

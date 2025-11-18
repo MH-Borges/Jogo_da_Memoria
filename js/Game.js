@@ -343,7 +343,6 @@ const relevaCarta = ({ target }) => {
 }
 
 const createCard = (item) => {
-    
     const card = createElement('div', 'card');
     const front = createElement('div', 'face front');
     const back = createElement('div', 'face back');
@@ -360,15 +359,12 @@ const createCard = (item) => {
 }
 
 const loadGame = (items) => {
-    
     const duplicateCharacters = [ ...items, ...items ];
     const shuffledArray = duplicateCharacters.sort(() => Math.random() - 0.5);
 
     shuffledArray.forEach((item) => {
-
         const card = createCard(item);
         grid.appendChild(card);
-
     });
 
 }
